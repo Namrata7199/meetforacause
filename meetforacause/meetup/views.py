@@ -82,8 +82,31 @@ def event_details(request, pk):
     return render(request, 'event_details.html', {'detail': detail})
 
 
+@login_required
 def attend(request, pk):
     meet = Event.objects.get(pk=pk)
     user = request.user
     meet.attendees.add(user)
     return render(request, 'thanks.html')
+
+
+@login_required
+def organise(request, pk):
+    meet = Event.objects.get(pk=pk)
+    user = request.user
+    meet.group.add(user)
+    return render(request, 'thanks.html')
+
+
+@login_required
+def sponsor(request, pk):
+    meet = Event.objects.get(pk=pk)
+    user = request.user
+    meet.sponsors.add(user)
+    return render(request, 'sponsor.html', {'meet': meet})
+
+
+@login_required
+def paid_services(request, pk):
+    event = Event.objects.get(pk=pk)
+    return render(request, 'paid_services.html', {'event': event})

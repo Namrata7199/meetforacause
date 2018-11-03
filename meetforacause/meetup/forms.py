@@ -18,3 +18,8 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+
+# class SponsorForm(ModelForm):
+# 	class Meta:
+# 		model : sponsor_details
+# 		fields = ['name','email','contact_no',]
