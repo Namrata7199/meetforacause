@@ -12,10 +12,9 @@ class Event(models.Model):
 	cause = models.CharField(max_length=1000)
 	image = models.ImageField(upload_to = 'media/')
 	organiser = models.OneToOneField(User, related_name="organiser", on_delete=models.CASCADE, blank = True)
-	attendees = models.ManyToManyField(User, related_name="atendees",blank = True)
+	attendees = models.ManyToManyField(User, related_name="attendees",blank = True)
 	non_attendees = models.ManyToManyField(User, related_name="non_attendees",blank = True)
 	city = models.CharField(max_length=100)
 	country = models.CharField(max_length=100)
 	date = models.DateField()
 	time = models.TimeField()
-
