@@ -7,7 +7,7 @@ from django.db import models
 # Create your models here.
 
 
-class event(models.Model):
+class Event(models.Model):
 	title = models.CharField(max_length=100)
 	cause = models.CharField(max_length=1000)
 	image = models.ImageField(upload_to='media/')

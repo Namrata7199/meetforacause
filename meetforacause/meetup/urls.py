@@ -5,5 +5,7 @@ from django.contrib import admin
 admin.site.site_header = 'Meet Up Admin'
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
+    path('', views.home, name='home'),
+    path('accounts/signup', views.signup, name='signup'),
+    path('accounts/login_user', views.login_user, name='login_user'),
 ]
