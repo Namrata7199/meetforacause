@@ -64,3 +64,7 @@ def login_user(request):
         else:
             return render(request, 'login_user.html', {'error_message': 'Invalid login'})
     return render(request, 'login_user.html')
+
+def event_details(request, pk):
+	detail = Event.objects.get(pk=pk)
+	return render(request,'event_details.html',{'detail' : detail})

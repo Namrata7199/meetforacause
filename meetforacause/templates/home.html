@@ -3,55 +3,22 @@
 {% block body %}
 <ul style="margin: 10px;list-style-type: none;">
 	{% for x in list %}
-		<li style="float:left; margin: 5px;">
-		<!-- <div class="card mb-3" style="width:250px; height:400px;">
-  			<h3 class="card-header">{{x.title}}</h3>
-  			<div class="card-body">
-    			<h5 class="card-title">{{x.cause}}</h5>
-  			</div>
-  			<img style="height: 200px; width: 200px; display: block;" src="{{x.image.url}}" alt="Card image">
-  			<div class="card-body">
-    			<div>
-    				<div>Date : {{x.date}}</div><br>
-    				<div>Place : {{x.city}}, {{x.country}}</div><br>
-    			</div>
-    		</div>
-  		</div>
-  		<ul class="list-group list-group-flush">
-    		<li class="list-group-item">Cras justo odio</li>
-    		<li class="list-group-item">Dapibus ac facilisis in</li>
-    		<li class="list-group-item">Vestibulum at eros</li>
-  		</ul>
-  		<div class="card-body">
-    		<a href="#" class="card-link">Card link</a>
-    		<a href="#" class="card-link">Another link</a>
-  		</div>
-		</div> -->
-<div class="card mb-3" style="width:250px; height:400px;">
-  <h3 class="card-header">{{x.title}}</h3>
-  <div class="card-body">
-    <h5 class="card-title">{{x.cause}}</h5>
-    <!-- <h6 class="card-subtitle text-muted">Support card subtitle</h6> -->
-  </div>
-  <img style="height: 200px; width: 100%; display: block;" src="{{x.image.url}}" alt="Card image">
-  <!-- <div class="card-body">
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div> -->
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Date : {{x.date}}</li>
-    <li class="list-group-item">Time : {{x.time}}</li>
-    <li class="list-group-item">Place : {{x.city}}, {{x.country}}</li>
-    <li class="list-group-item"> <a href="#" class="card-link">Know More</a></li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Know More</a>
-    <!-- <a href="#" class="card-link">Another link</a> -->
-  </div>
-  <!-- <div class="card-footer text-muted">
-    2 days ago
-  </div> -->
-</div>
-  	</li>
-  	{% endfor %}
-  </ul>
+	<li style="float:left; margin: 5px;">
+		<div class="card mb-3" style="width:250px; height:400px;">
+			<h3 class="card-header">{{x.title}}</h3>
+			<div class="card-body">
+				<h5 class="card-title">{{x.cause}}</h5>
+			</div>
+			<img style="height: 200px; width: 100%; display: block;" src="{{x.image.url}}" alt="Card image">
+
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item">Date : {{x.date}}</li>
+				<li class="list-group-item">Time : {{x.time}}</li>
+				<li class="list-group-item">Place : {{x.city}}, {{x.country}}</li>
+				<li class="list-group-item"> <a href="{% url 'event_details' x.pk %}" class="card-link">Know More</a></li>
+			</ul>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
 {% endblock %}

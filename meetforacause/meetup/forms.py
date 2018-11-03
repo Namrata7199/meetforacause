@@ -7,8 +7,7 @@ from .models import Event
 class EventForm(ModelForm):
 	class Meta:
 		model = Event
-		fields = ['title', 'cause', 'city', 'country', 'date', 'time', 'image',]
-from django.contrib.auth.models import User
+		fields = ['title', 'cause', 'city', 'country', 'date', 'time', 'image','summary',]
 
 
 class SignUpForm(UserCreationForm):
