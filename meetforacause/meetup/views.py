@@ -17,8 +17,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-	list = Event.objects.all()
-	return render(request, 'home.html',{'list' : list})
+    events_list = Event.objects.all()
+    return render(request, 'home.html',{'list' : events_list})
 
 
 @login_required
@@ -64,3 +64,18 @@ def login_user(request):
         else:
             return render(request, 'login_user.html', {'error_message': 'Invalid login'})
     return render(request, 'login_user.html')
+
+
+def search_by_location(request):
+    if request.method == "POST":
+        location = request.POST['location']
+        if location:
+            events = Event.objects.filter(city=location)
+            if events:
+                return render(request, 'home.html', {'list': events})
+            else:
+                return render(request, 'home.html', {'error_message': "No events found for this location"})
+        else:
+            return redirect('home')
+    else:
+        return redirect('home')
