@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from .forms import EventForm
-from django.shortcuts import render,redirect
 from .models import Event
-from django.shortcuts import render, redirect
-from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -18,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     events_list = Event.objects.all()
-    return render(request, 'home.html',{'list' : events_list})
+    return render(request, 'home.html', {'list' : events_list})
 
 
 @login_required
@@ -79,3 +75,8 @@ def search_by_location(request):
             return redirect('home')
     else:
         return redirect('home')
+
+
+def event_details(request, pk):
+    detail = Event.objects.get(pk=pk)
+    return render(request, 'event_details.html', {'detail': detail})
