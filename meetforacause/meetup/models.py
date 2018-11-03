@@ -20,3 +20,8 @@ class Event(models.Model):
 	date = models.DateField()
 	time = models.TimeField()
 	summary = models.TextField()
+
+# class sponsor_details(models.Model):
+# 	name = models.CharField(max_length=100)
+# 	email = models.EmailField(max_length=1000)
+# 	contact_no = models.CharField(max_length=13)
