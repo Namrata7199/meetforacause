@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
   <form method="post">
   <fieldset>
       <legend>Sign Up</legend>
@@ -17,14 +22,21 @@
                 <div class="col-sm-offset-2 col-sm-10">
                     <span class="text-danger small">{{ field.errors }}</span>
                 </div>
+                <div class="row">
                 <label class="control-label col-sm-2" >{{ field.label_tag }}</label>
                 <div class="col-sm-10">{{ field }}</div>
+                </div>
             </div>
 
         {% endfor %}
-        <button type="submit">Sign up</button>
+        <button type="submit" class="btn btn-primary">Sign up</button>
   </fieldset>
   </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 

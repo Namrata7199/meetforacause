@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from .forms import EventForm
 from django.shortcuts import render,redirect
 from .models import Event
+from django.shortcuts import render, redirect
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -19,18 +20,19 @@ def home(request):
 	list = Event.objects.all()
 	return render(request, 'home.html',{'list' : list})
 
-# @login_required
+
+@login_required
 def add(request):
-	if request.method=='POST':
-		form = EventForm(request.POST,request.FILES)
-		if form.is_valid():
-			x = form.save(commit=False)
-			x.organiser = request.user
-			x.save()
-			return redirect('home')
-	else:
-		form = EventForm()
-	return render(request,'add_event.html',{'form' : form})
+    if request.method == 'POST':
+        form = EventForm(request.POST, request.FILES)
+        if form.is_valid():
+            x = form.save(commit=False)
+            x.organiser = request.user
+            x.save()
+            return redirect('home')
+    else:
+        form = EventForm()
+    return render(request, 'add_event.html', {'form': form})
 
 
 def signup(request):
@@ -56,7 +58,7 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return redirect('home') #, pk=user.security.id)
+                return redirect('home')  # , pk=user.security.id)
             else:
                 return render(request, 'login_user.html', {'error_message': 'Your account has been disabled'})
         else:
