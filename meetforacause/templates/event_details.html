@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="jumbotron">
-  <h1 class="display-3">{{detail.title}}</h1>
-  <p class="lead">{{detail.cause}}</p>
-  <hr class="my-4">
-  <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
-  <!-- <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-  </p> -->
+	<h1 class="display-3">{{detail.title}}</h1>
+	<p class="lead">{{detail.cause}}</p>
+	<hr class="my-4">
 </div>
-<img src="{{detail.image.url}}">
-<ul style="list-style-type: none;">
-	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="#" role="button">Attend</a></li>
+<img src="{{detail.image.url}}" style="display:block; margin-left:auto; margin-right:auto; width:75%; height:75%;">
+<div style="text-align: center; margin:10px;">{{detail.summary}}</div>
+<ul style="list-style-type: none; margin-top:10px; margin-right: auto; margin-left: auto;">
+	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="{% url 'attend' detail.pk%}" role="button">Attend</a></li>
 	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="#" role="button">Organize</a></li>
 	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="#" role="button">Sponsor</a></li>
+</ul>
 {% endblock %}

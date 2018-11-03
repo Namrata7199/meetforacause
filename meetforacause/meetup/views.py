@@ -68,3 +68,9 @@ def login_user(request):
 def event_details(request, pk):
 	detail = Event.objects.get(pk=pk)
 	return render(request,'event_details.html',{'detail' : detail})
+
+def attend(request,pk):
+	meet = Event.objects.get(pk=pk)
+	user = request.user
+	meet.attendees.add(user)
+	return render(request,'thanks.html')
