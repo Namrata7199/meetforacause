@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 from .forms import EventForm
 from django.shortcuts import render,redirect
-
+from .models import Event
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
@@ -16,7 +16,8 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    return render(request, 'base.html')
+	list = Event.objects.all()
+	return render(request, 'home.html',{'list' : list})
 
 # @login_required
 def add(request):
