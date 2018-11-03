@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from .forms import EventForm
+from django.shortcuts import render,redirect
 
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
@@ -7,12 +9,27 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignUpForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
 
 def home(request):
     return render(request, 'base.html')
+
+# @login_required
+def add(request):
+	if request.method=='POST':
+		form = EventForm(request.POST,request.FILES)
+		if form.is_valid():
+			x = form.save(commit=False)
+			x.organiser = request.user
+			x.save()
+			return redirect('home')
+	else:
+		form = EventForm()
+	return render(request,'add_event.html',{'form' : form})
 
 
 def signup(request):
