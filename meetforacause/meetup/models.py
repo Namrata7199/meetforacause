@@ -16,7 +16,7 @@ class Event(models.Model):
     attendees = models.ManyToManyField(User, related_name="attendees", blank=True)
     sponsors = models.ManyToManyField(User, related_name="non_attendees", blank=True)
     city = models.CharField(max_length=100)
-    country = models.CharField(max_length=100)
+    street = models.CharField(max_length=100)
     date = models.DateField()
     time = models.TimeField()
     summary = models.TextField()

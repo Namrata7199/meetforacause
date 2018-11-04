@@ -7,26 +7,6 @@
 </div>
 
 <div style="text-align: center; margin:10px;">{{detail.summary}}</div>
-{#<div>Attendees : </div><br>#}
-{#<ul>#}
-{#	{% for x in detail.attendees.all %}#}
-{#	<li>{{x.first_name}} {{x.last_name}}</li>#}
-{#	{% endfor %}#}
-{#</ul>#}
-{#<div>Organisers : </div><br>#}
-{#<ul>#}
-{#	{% for x in detail.group.all %}#}
-{#	<li>{{x.first_name}} {{x.last_name}}</li>#}
-{#	{% endfor %}#}
-{#</ul>#}
-{#<div>Sponsors : </div><br>#}
-{#<ul>#}
-{#	{% for x in detail.sponsors.all %}#}
-{#	<li>{{x.first_name}} {{x.last_name}}</li>#}
-{#	{% endfor %}#}
-{#</ul>#}
-
-{#    <div id="map"></div>#}
 <div class="container">
 <div class="row"><img src="{{detail.image.url}}" style="display:block; margin-left:auto; margin-right:auto; width:75%; height:75%;"></div>
 <div class="row" style="text-align: center; margin :10px">
@@ -53,7 +33,7 @@
                   </div>
                   <div class="card-body">
                     <h6 class="card-title"><b>Sponsors</b></h6>
-                      {% for sponsor in detail.attendees.all %}
+                      {% for sponsor in detail.sponsors.all %}
                           <h6>{{ sponsor.first_name }} {{ sponsor.last_name }}</h6>
                       {% endfor %}
                   </div>
@@ -61,7 +41,6 @@
         </div>
     </div>
 </div>
-{#<div id="map"></div>#}
 
     <script>
         console.log({{ detail.longitude}});
@@ -81,7 +60,7 @@
       }
     </script>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXuSf6U28EM3D34ZvB9wPpkxaiAiyjapY&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxBislywSht1-OINIsHfCmsYpU4N7wvJw&callback=initMap">
     </script>
 <ul style="list-style-type: none; margin-top:10px; margin-right: auto; margin-left: auto;">
 	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="{% url 'attend' detail.pk%}" role="button">Attend</a></li>

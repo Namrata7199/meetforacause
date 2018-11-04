@@ -25,12 +25,12 @@ def add(request):
         if form.is_valid():
             x = form.save(commit=False)
             x.organiser = request.user
-            key = 'AIzaSyBI75_UJz3J7lM_rR43viAMG3CaVNOox2c'
+            key = 'AIzaSyAxBislywSht1-OINIsHfCmsYpU4N7wvJw'
             url = ('https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
                    '?input=%s'
                    '&inputtype=textquery'
                    '&fields=formatted_address,name,geometry'
-                   '&key=%s') % (x.city, key)
+                   '&key=%s') % (x.street, key)
             response = urllib.request.urlopen(url)
             json_raw = response.read()
             json_data = json.loads(json_raw)

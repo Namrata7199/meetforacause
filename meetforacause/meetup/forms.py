@@ -4,10 +4,11 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from .models import Event
 
+
 class EventForm(ModelForm):
-	class Meta:
-		model = Event
-		fields = ['title', 'cause', 'city', 'country', 'date', 'time', 'image','summary',]
+    class Meta:
+        model = Event
+        fields = ['title', 'cause', 'street', 'city', 'date', 'time', 'image', 'summary', ]
 
 
 class SignUpForm(UserCreationForm):
@@ -17,7 +18,7 @@ class SignUpForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2',)
 
 # class SponsorForm(ModelForm):
 # 	class Meta:
