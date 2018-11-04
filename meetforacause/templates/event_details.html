@@ -2,8 +2,11 @@
 {% block body %}
 <div class="jumbotron">
 	<h1 class="display-3">{{detail.title}}</h1>
-	<p class="lead">{{detail.cause}}</p>
+	<h4 class="lead">{{detail.cause}}</h4>
 	<hr class="my-4">
+    <h6>{{ detail.time }}, {{ detail.date }}</h6>
+    <h6>{{ detail.street }}, {{ detail.city }}</h6>
+    <h6><b>Organised by: </b>{{ detail.organiser.first_name }}</h6>
 </div>
 
 <div style="text-align: center; margin:10px;">{{detail.summary}}</div>
@@ -16,7 +19,7 @@
    <div class="offset-sm-3" id="map"></div>
 </div>
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
             <div class="card border-primary mb-3" style="max-width: 20rem;">
               <div class="card-header">Event Details</div>
                   <div class="card-body">
@@ -25,19 +28,29 @@
                           <h6>{{ attendee.first_name }} {{ attendee.last_name }}</h6>
                       {% endfor %}
                   </div>
-                  <div class="card-body">
-                    <h6 class="card-title"><b>Organisers</b></h6>
-                      {% for organiser in detail.group.all %}
-                          <h6>{{ organiser.first_name }} {{ organiser.last_name }}</h6>
-                      {% endfor %}
-                  </div>
-                  <div class="card-body">
-                    <h6 class="card-title"><b>Sponsors</b></h6>
-                      {% for sponsor in detail.sponsors.all %}
-                          <h6>{{ sponsor.first_name }} {{ sponsor.last_name }}</h6>
-                      {% endfor %}
-                  </div>
             </div>
+        </div>
+        <div class="col-sm-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header">Event Details</div>
+                      <div class="card-body">
+                        <h6 class="card-title"><b>Organisers</b></h6>
+                          {% for organiser in detail.group.all %}
+                              <h6>{{ organiser.first_name }} {{ organiser.last_name }}</h6>
+                          {% endfor %}
+                      </div>
+                </div>
+        </div>
+        <div class="col-sm-4">
+                <div class="card border-primary mb-3" style="max-width: 20rem;">
+                  <div class="card-header">Event Details</div>
+                      <div class="card-body">
+                        <h6 class="card-title"><b>Sponsors</b></h6>
+                          {% for sponsor in detail.sponsors.all %}
+                              <h6>{{ sponsor.first_name }} {{ sponsor.last_name }}</h6>
+                          {% endfor %}
+                      </div>
+                </div>
         </div>
     </div>
 </div>
@@ -59,9 +72,9 @@
         });
       }
     </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxBislywSht1-OINIsHfCmsYpU4N7wvJw&callback=initMap">
-    </script>
+{#    <script async defer#}
+{#    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxBislywSht1-OINIsHfCmsYpU4N7wvJw&callback=initMap">#}
+{#    </script>#}
 <ul style="list-style-type: none; margin-top:10px; margin-right: auto; margin-left: auto;">
 	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="{% url 'attend' detail.pk%}" role="button">Attend</a></li>
 	<li style="float: left; margin:5px;"><a class="btn btn-primary btn-lg" href="{% url 'organise' detail.pk%}" role="button">Organize</a></li>

@@ -5,9 +5,9 @@
 {#        <div class="row">#}
 {#            <div class="offset-sm-3">#}
 
-                <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'search_by_location'%}" role="form">
+                <form class="form-inline my-2 my-lg-0" method="post" action="{% url 'search_by_location'%}" role="form" style="margin: 10px;">
                   {% csrf_token %}
-                  <input class="form-control mr-sm-2" placeholder="Search by Location" name="location" type="text">
+                  <input class="form-control mr-sm-2" placeholder="Search by Location" name="location" type="text" style="margin: 10px;">
                   <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
 {#            </div>#}
@@ -30,7 +30,7 @@
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">Date : {{x.date}}</li>
 				<li class="list-group-item">Time : {{x.time}}</li>
-				<li class="list-group-item">Place : {{x.street}}, {{x.city}}</li>
+				<li class="list-group-item">Place : {{x.street}}<br> {{x.city}}</li>
 				<li class="list-group-item"> <a href="{% url 'event_details' x.pk %}" class="card-link">Know More</a></li>
 			</ul>
 		</div>

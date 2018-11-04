@@ -108,7 +108,8 @@ def organise(request, pk):
     meet = Event.objects.get(pk=pk)
     user = request.user
     meet.group.add(user)
-    return render(request, 'thanks.html')
+    # return render(request, 'thanks.html')
+    return render(request, 'sponsor.html', {'meet': meet})
 
 
 @login_required
