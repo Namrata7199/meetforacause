@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import SignUpForm
 from django.contrib.auth.decorators import login_required
+import urllib.request, json
 
 
 # Create your views here.
@@ -24,6 +25,18 @@ def add(request):
         if form.is_valid():
             x = form.save(commit=False)
             x.organiser = request.user
+            key = 'AIzaSyBI75_UJz3J7lM_rR43viAMG3CaVNOox2c'
+            url = ('https://maps.googleapis.com/maps/api/place/findplacefromtext/json'
+                   '?input=%s'
+                   '&inputtype=textquery'
+                   '&fields=formatted_address,name,geometry'
+                   '&key=%s') % (x.city, key)
+            response = urllib.request.urlopen(url)
+            json_raw = response.read()
+            json_data = json.loads(json_raw)
+            print(json_data)
+            x.latitude = json_data['candidates'][0]['geometry']['location']['lat']
+            x.longitude = json_data['candidates'][0]['geometry']['location']['lng']
             x.save()
             return redirect('home')
     else:

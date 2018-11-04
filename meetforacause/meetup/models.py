@@ -20,4 +20,5 @@ class Event(models.Model):
     date = models.DateField()
     time = models.TimeField()
     summary = models.TextField()
-
+    latitude = models.FloatField(default=0.0)
+    longitude = models.FloatField(default=0.0)
