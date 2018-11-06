@@ -19,6 +19,10 @@ source meetup/bin/activate
 cd meetforacause
 pip install -r requirements.txt
 ```
+### Generate Google Maps API Key
+- Generate an API key for Places API or Maps JavaScript API at ```https://console.cloud.google.com/google/maps-apis``` 
+- Paste the key in ```meetup/views.py``` and ```templates/event_details.html```
+
 ### Migrate Database and Run
 ```bash
 python manage.py makemigrations
