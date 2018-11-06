@@ -1,7 +1,7 @@
 # meetforacause
 This application was created in under 24 hours at Athena IEEE Women's Hackathon held at NITK Surathkal.
 
-##Installation
+## Installation
 Enter the following commands in your terminal
 
 ### Install components 
