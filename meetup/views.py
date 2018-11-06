@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from .forms import EventForm
-from .models import Event
+from .models import Event, User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
@@ -124,3 +124,9 @@ def sponsor(request, pk):
 def paid_services(request, pk):
     event = Event.objects.get(pk=pk)
     return render(request, 'paid_services.html', {'event': event})
+
+
+def view_profile(request):
+    user = request.user
+    events = Event.objects.filter(attendees=user)
+    return render(request, 'profile.html', {'user': user, 'events': events})
